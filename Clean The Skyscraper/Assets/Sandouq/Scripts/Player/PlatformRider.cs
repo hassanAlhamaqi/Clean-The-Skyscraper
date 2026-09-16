@@ -14,11 +14,14 @@ namespace Sandouq.Player
         private Vector3 previousSupportPosition;
         private Collider cachedCollider;
         private MovingPlatform cachedPlatform;
+        public Vector3 Displacement { get; private set; }
         private void Awake() => controller = GetComponent<CharacterController>();
         private void Update()
         {
-            if (support && controller.enabled)
-                controller.Move(support.transform.position - previousSupportPosition);
+            // PlayerMovement applies this in its one Move call. A separate upward Move here
+            // would clear isGrounded just before the player tries to jump off the lift.
+            Displacement = support && controller.enabled
+                ? support.transform.position - previousSupportPosition : Vector3.zero;
         }
         private void LateUpdate()
         {
@@ -35,6 +38,6 @@ namespace Sandouq.Player
             support = cachedPlatform;
             if (support) previousSupportPosition = support.transform.position;
         }
-        private void OnDisable() => support = null;
+        private void OnDisable() { support = null; Displacement = Vector3.zero; }
     }
 }

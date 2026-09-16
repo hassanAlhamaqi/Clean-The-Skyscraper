@@ -17,6 +17,8 @@ The next action is shown on the button sign and in the HUD when you aim at it. H
 
 Existing controls remain: WASD / left stick, mouse / right stick, V / right stick click for camera, Shift / left stick click for sprint, Space / south button for jump, Escape / Start for cursor.
 
+**Jump:** press Space or the gamepad bottom face button (A on Xbox, Cross on PlayStation) while grounded. This also works from the rising or descending lift. Tune **PlayerMovement → Jump → Jump Height** on PF_Player (metres). Gravity and the lift's displacement are applied in a single CharacterController move so riding does not overwrite the grounded state before the jump check. Release Escape's cursor mode before using jump controls.
+
 The original **Cleaning_Prototype.unity** is retained as a small single-wall test scene. Both scenes use the upgraded player and HUD prefabs. No project settings, packages, or unrelated folders were intentionally changed by this update.
 
 ## Control the dirt texture

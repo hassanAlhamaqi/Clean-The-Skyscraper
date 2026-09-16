@@ -1,5 +1,11 @@
 # Validation — 2026-09-15
 
+## Jump update — 2026-09-16
+
+`JumpValidation` passed in Unity Play Mode: Space and gamepad south-button bindings launch a grounded player; jumping gains height and lands; mid-air presses/holding do not cause extra jumps; the player jumps from ascending and descending platforms and lands back on the moving lift.
+
+The headless editor cannot lock the cursor. This test routes simulated devices to the Game view and forwards the actual JumpPressed binding to PlayerMovement.TryJump, bypassing only the cursor gate. Normal gameplay still requires the captured cursor. Movement and platform carry now use one CharacterController.Move call, and minimum move distance is zero to retain ground checks at high frame rates.
+
 ## Skyscraper update
 
 The new `SkyscraperValidation` isolated Play Mode smoke test passed:

@@ -96,6 +96,7 @@ namespace Sandouq.Editor
         {
             var root = new GameObject("PF_Player"); root.layer = 2;
             var controller = root.AddComponent<CharacterController>(); controller.height = 1.8f;
+            controller.minMoveDistance = 0;
             controller.radius = 0.3f; controller.center = new Vector3(0, 0.9f, 0); controller.stepOffset = 0.3f;
             var input = root.AddComponent<PlayerInputReader>();
             var movement = root.AddComponent<PlayerMovement>(); Set(movement, "input", input);
